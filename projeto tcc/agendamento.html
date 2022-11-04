@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Agendamento</title>
+</head>
+<body>
+    
+
+ <!-- Navbar Section -->
+ <nav class="navbar">
+  <div class="navbar__container">
+  <a href="#home" id="navbar__logo">Espaço Queen</a>
+    <div class="navbar__toggle" id="mobile-menu">
+      <span class="bar"></span> <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <ul class="navbar__menu">
+      <li class="navbar__item">
+        <a href="#home" class="navbar__links" id="home-page">Home</a>
+      </li>
+      <li class="navbar__item">
+        <a href="#about" class="navbar__links" id="about-page">About</a>
+      </li>
+      <li class="navbar__item">
+        <a href="#services" class="navbar__links" id="services-page"
+          >Services</a
+        >
+      </li>
+    </ul>
+    <ul class="navbar__menu2">
+      <li class="navbar__item2">
+        <a href="#home" class="navbar__links2" id="home-page">Home</a>
+      </li>
+      <li class="navbar__item2">
+        <a href="#about" class="navbar__links2" id="about-page">About</a>
+      </li>
+      <li class="navbar__item2">
+        <a href="#services" class="navbar__links2" id="services-page"
+          >Services</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
+ <!--fim da navbar-->
+
+
+<!--agendamento-->
+<form action="" method="get" onsubmit="abrirWhatsapp()" >
+<div class="form">
+
+<input class="campo" type="text" placeholder="Nome" id="nome" >
+<input class="campo" type="date" placeholder="Data" id="data" >
+
+</div>
+
+<div class="sessao">
+  <img class="img_sessao" src="img/procedimento1.jpg" alt="">
+  <input class="bt01" type="checkbox" name="check" id="manicure" value="manicure"><label for="" class="textobt">Manicuri</label><br>
+  <button class="btn-saiba-sessao">Saiba Mais</button>
+
+</div>
+<div class="sessao">
+  <img class="img_sessao" src="img/procedimento1.jpg" alt="">
+  <input class="bt01" type="checkbox" name="check" id="pedicure"><label for="" class="textobt">Pedicuri</label><br>
+  <button class="btn-saiba-sessao">Saiba Mais</button>
+</div>
+<div class="sessao">
+  <img class="img_sessao" src="img/procedimento1.jpg" alt="">
+  <input class="bt01" type="checkbox" name="check" id="alongamento"><label for="" class="textobt">Alongamento</label><br>
+  <button class="btn-saiba-sessao">Saiba Mais</button>
+</div>
+<div class="sessao">
+  <img class="img_sessao" src="img/procedimento1.jpg" alt="">
+  <input class="bt01" type="checkbox" name="check" id="sombrancelha"><label for="" class="textobt">Sobrancelha</label><br>
+  <button class="btn-saiba-sessao">Saiba Mais</button>
+</div>
+
+<!--<button onClick="validar()" class="confimar" id="btnSelecionar">Confimar</button>
+-->
+<button id="btsele" class="confimar" type="submit" >Finalizar</button>
+<ul id="selecaop" class="teste">
+
+</ul>
+</form>
+<br>
+<br>
+
+<!--fim agendamento-->
+
+<script>
+/*
+function validar(){
+  //alert("estou aqui");
+  var data = document.getElementById("data").value;
+  var nome = document.getElementById("nome").value;
+  var manicure = document.getElementById("manicure").value;
+  var pedicure = document.getElementById("pedicure").value;
+  /*var manicure = document.getElementById("manicure").value;
+  var manicure = document.getElementById("manicure").value;
+
+if(nome === ""){
+    alert("O campo não pode ser vazio");
+  }
+if(data === ""){
+    alert("O campo não pode ser vazio");
+  }
+
+  if(manicure.checked){
+    selecao += manicure.value;
+    alert(selecao + "checado");
+  }
+  
+
+}
+*/
+
+
+
+
+
+var proce = ["Manicuri","Pedicuri","Alongamento","Sobrancelha"];
+		
+			
+			document.addEventListener("DOMContentLoaded", function(){
+				document.getElementById("btsele").addEventListener("click", function(){ 
+				
+					var elementos = document.getElementsByName("check");
+					
+					for(i = 0; i < elementos.length; i++){
+						if(elementos[i].checked){
+							document.getElementById("selecaop").innerHTML += "<li>"+proce[i]+"</li>"; 
+							
+						}
+					}
+					
+					document.getElementById("btsele").disabled;
+      
+          
+
+        				});
+			});
+
+      function mudarcor(){
+             let cor= document.getElementById("btsele");
+            cor.style.backgroundColor="#900";
+           window.alert("procedimento escolhido se caso escolheu o errado recarregue a pagina");
+      }
+
+  
+        function abrirWhatsapp() {
+  var nome = document.getElementById('nome').value;
+  var date = document.getElementById('data').value;
+  var pr = document.getElementById("selecaop").innerText;
+  var url = "https://wa.me/5511949030551?text=" // Seu numero
+    + "*Formulário de Contato*" + "%0a" // Mensagem personalizada
+    + "%0a" // Quebra de linha
+    + "*Nome*: " + nome + "%0a" // Dados do formulário
+    + "*E-mail*: " + date + "%0a"
+    +"*Procedimento*" + pr;
+  window.open(url, '_blank').focus();
+
+
+}
+  </script>
+
+<script src="app.js"></script>
+</body>
+</html>
